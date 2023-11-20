@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulador de Notas - PAS/UnB</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat&display=swap">
+    <style>
+        body {
+            background-color: #3498db;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            text-align: center;
+            margin: 20px;
+            color: #2c3e50;
+        }
+
+        h1 {
+            font-family: 'Montserrat', sans-serif;
+            background-color: #ecf0f1;
+            color: #3498db;
+            font-size: 36px;
+            font-weight: bold;
+            padding: 10px;
+            border-radius: 10px;
+            display: inline-block;
+            margin: 0;
+            letter-spacing: 2px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        form {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #343a40;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: left; /* Centralizar o texto dentro do formulário */
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #fff;
+            font-size: 16px;
+            font-weight: bold;
+        }
+
+        input {
+            width: calc(100% - 20px);
+            padding: 10px;
+            margin-bottom: 10px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 14px;
+            color: #495057;
+        }
+
+        input::placeholder {
+            color: #adb5bd;
+        }
+
+        button {
+            background-color: #52cc52;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+            margin: 0;
+        }
+
+        button:hover {
+            background-color: #46ad46;
+        }
+
+        #result {
+            font-size: 36px;
+            font-weight: bold;
+            color: #ff6f61;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .button-container {
+            text-align: right;
+        }
+
+        /* Adicionando espaçamento após cada seção */
+        .section-break {
+            height: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Simulador de Notas - PAS/UnB</h1>
+
+    <form id="calculatorForm">
+        <!-- PAS 1 -->
+        <div>
+            <label for="part1_1">PAS 1 - Parte 1 (Idiomas):</label>
+            <input type="number" id="part1_1" step="any" min="0" max="10" pattern="\d+(\.\d{3})?" placeholder="0.000 a 10.000" required>
+
+            <label for="part1_2">PAS 1 - Parte 2:</label>
+            <input type="number" id="part1_2" step="any" min="0" max="100" pattern="\d+(\.\d{3})?" placeholder="0.000 a 100.000" required>
+
+            <label for="part1_3">PAS 1 - Parte 3 (Redação):</label>
+            <input type="number" id="part1_3" step="any" min="0" max="10" pattern="\d+(\.\d{3})?" placeholder="0.000 a 10.000" required>
+        </div>
+
+        <!-- Adicionando espaçamento -->
+        <div class="section-break"></div>
+
+        <!-- PAS 2 -->
+        <div>
+            <label for="part2_1">PAS 2 - Parte 1 (Idiomas):</label>
+            <input type="number" id="part2_1" step="any" min="0" max="10" pattern="\d+(\.\d{3})?" placeholder="0.000 a 10.000" required>
+
+            <label for="part2_2">PAS 2 - Parte 2:</label>
+            <input type="number" id="part2_2" step="any" min="0" max="100" pattern="\d+(\.\d{3})?" placeholder="0.000 a 100.000" required>
+
+            <label for="part2_3">PAS 2 - Parte 3 (Redação):</label>
+            <input type="number" id="part2_3" step="any" min="0" max="10" pattern="\d+(\.\d{3})?" placeholder="0.000 a 10.000" required>
+        </div>
+
+        <!-- Adicionando espaçamento -->
+        <div class="section-break"></div>
+
+        <!-- PAS 3 -->
+        <div>
+            <label for="part3_1">PAS 3 - Parte 1 (Idiomas):</label>
+            <input type="number" id="part3_1" step="any" min="0" max="10" pattern="\d+(\.\d{3})?" placeholder="0.000 a 10.000" required>
+
+            <label for="part3_2">PAS 3 - Parte 2:</label>
+            <input type="number" id="part3_2" step="any" min="0" max="100" pattern="\d+(\.\d{3})?" placeholder="0.000 a 100.000" required>
+
+            <label for="part3_3">PAS 3 - Parte 3 (Redação):</label>
+            <input type="number" id="part3_3" step="any" min="0" max="10" pattern="\d+(\.\d{3})?" placeholder="0.000 a 10.000" required>
+        </div>
+
+        <!-- Adicionando espaçamento -->
+        <div class="section-break"></div>
+
+        <!-- Resultado -->
+        <div id="result"></div>
+
+        <!-- Adicionando espaçamento -->
+        <div class="section-break"></div>
+
+        <!-- Botão de Calcular -->
+        <div class="button-container">
+            <button type="button" onclick="calculate()">Calcular</button>
+        </div>
+    </form>
+
+    <script>
+        function calculate() {
+            // Lógica de cálculo aqui
+            var part1_1 = parseFloat(document.getElementById("part1_1").value) || 0;
+            var part1_2 = parseFloat(document.getElementById("part1_2").value) || 0;
+            var part1_3 = parseFloat(document.getElementById("part1_3").value) || 0;
+
+            var part2_1 = parseFloat(document.getElementById("part2_1").value) || 0;
+            var part2_2 = parseFloat(document.getElementById("part2_2").value) || 0;
+            var part2_3 = parseFloat(document.getElementById("part2_3").value) || 0;
+
+            var part3_1 = parseFloat(document.getElementById("part3_1").value) || 0;
+            var part3_2 = parseFloat(document.getElementById("part3_2").value) || 0;
+            var part3_3 = parseFloat(document.getElementById("part3_3").value) || 0;
+
+            var resultado = (((part1_1 - 3.628) / 2.687) * 0.72) + (((part1_2 - 23.738) / 13.098) * 8.28) + ((part1_3 - 5.983) / 2.702)
+                + ((((part2_1 - 3.871) / 3.226) * 0.72) + (((part2_2 - 19.769) / 11.666) * 8.28) + ((part2_3 - 6.016) / 2.224)) * 2
+                + ((((part3_1 - 5.035) / 2.358) * 0.72) + (((part3_2 - 27.722) / 14.027) * 8.28) + ((part3_3 - 6.782) / 1.738)) * 3;
+
+            // Exibindo o Argumento Final com três casas decimais
+            document.getElementById("result").innerText = "Argumento Final: " + resultado.toFixed(3);
+        }
+    </script>
+
+</body>
+</html>
