@@ -94,8 +94,10 @@
         .section-break {
             height: 20px;
         }
-.button-container a {
-        color: yellow;
+
+        .button-container a {
+            color: yellow;
+        }
     </style>
 </head>
 <body>
@@ -117,7 +119,7 @@
 
         <!-- Adicionando espaçamento -->
         <div class="section-break"></div>
-  <div class="section-break"></div>
+        <div class="section-break"></div>
 
         <!-- PAS 2 -->
         <div>
@@ -133,7 +135,7 @@
 
         <!-- Adicionando espaçamento -->
         <div class="section-break"></div>
-  <div class="section-break"></div>
+        <div class="section-break"></div>
 
         <!-- PAS 3 -->
         <div>
@@ -156,52 +158,52 @@
         <!-- Adicionando espaçamento -->
         <div class="section-break"></div>
 
-<div class="button-container">
-    <a href="https://profbritogeo.github.io/unbpas-notas/"target="_blank">Ver notas de Corte</a>
-    </form>
+        <div class="button-container">
+            <a href="https://profbritogeo.github.io/unbpas-notas/" target="_blank">Ver notas de Corte</a>
+        </div>
 
- <div class="section-break"></div>
+        <div class="section-break"></div>
 
         <!-- Botão de Calcular -->
         <div class="button-container">
             <button type="button" onclick="calculate()">Calcular</button>
-
-  <div class="section-break"></div>
-  <div class="section-break"></div>
-  <div class="section-break"></div>
-  <div class="section-break"></div>
-  <div class="section-break"></div>
-  <div class="section-break"></div>
         </div>
 
+        <!-- Adicionando espaçamento -->
+        <div class="section-break"></div>
 
-    <script>
-        function calculate() {
-            // Lógica de cálculo aqui
-            var part1_1 = parseFloat(document.getElementById("part1_1").value) || 0;
-            var part1_2 = parseFloat(document.getElementById("part1_2").value) || 0;
-            var part1_3 = parseFloat(document.getElementById("part1_3").value) || 0;
+        <!-- Elemento para exibir a mensagem -->
+        <div id="message" style="color: #f0e68c;"></div>
 
-            var part2_1 = parseFloat(document.getElementById("part2_1").value) || 0;
-            var part2_2 = parseFloat(document.getElementById("part2_2").value) || 0;
-            var part2_3 = parseFloat(document.getElementById("part2_3").value) || 0;
+        <script>
+            function calculate() {
+                // Lógica de cálculo aqui
+                var part1_1 = parseFloat(document.getElementById("part1_1").value) || 0;
+                var part1_2 = parseFloat(document.getElementById("part1_2").value) || 0;
+                var part1_3 = parseFloat(document.getElementById("part1_3").value) || 0;
 
-            var part3_1 = parseFloat(document.getElementById("part3_1").value) || 0;
-            var part3_2 = parseFloat(document.getElementById("part3_2").value) || 0;
-            var part3_3 = parseFloat(document.getElementById("part3_3").value) || 0;
+                var part2_1 = parseFloat(document.getElementById("part2_1").value) || 0;
+                var part2_2 = parseFloat(document.getElementById("part2_2").value) || 0;
+                var part2_3 = parseFloat(document.getElementById("part2_3").value) || 0;
 
-            var resultado = (((part1_1 - 3.628) / 2.687) * 0.72) + (((part1_2 - 23.738) / 13.098) * 8.28) + ((part1_3 - 5.983) / 2.702)
-                + ((((part2_1 - 3.871) / 3.226) * 0.72) + (((part2_2 - 19.769) / 11.666) * 8.28) + ((part2_3 - 6.016) / 2.224)) * 2
-                + ((((part3_1 - 5.035) / 2.358) * 0.72) + (((part3_2 - 27.722) / 14.027) * 8.28) + ((part3_3 - 6.782) / 1.738)) * 3;
+                var part3_1 = parseFloat(document.getElementById("part3_1").value) || 0;
+                var part3_2 = parseFloat(document.getElementById("part3_2").value) || 0;
+                var part3_3 = parseFloat(document.getElementById("part3_3").value) || 0;
 
-            // Exibindo o Argumento Final com três casas decimais
-            document.getElementById("result").innerText = "Argumento Final: " + resultado.toFixed(3);
-           // Exibindo a mensagem
-            var messageElement = document.getElementById("message");
-            messageElement.innerText = "Ficou com dúvidas? Me chama no insta: @professor_brito";
-        }
-    </script>
+                var resultado = (((part1_1 - 3.628) / 2.687) * 0.72) + (((part1_2 - 23.738) / 13.098) * 8.28) + ((part1_3 - 5.983) / 2.702)
+                    + ((((part2_1 - 3.871) / 3.226) * 0.72) + (((part2_2 - 19.769) / 11.666) * 8.28) + ((part2_3 - 6.016) / 2.224)) * 2
+                    + ((((part3_1 - 5.035) / 2.358) * 0.72) + (((part3_2 - 27.722) / 14.027) * 8.28) + ((part3_3 - 6.782) / 1.738)) * 3;
 
-</body>
+                // Exibindo o Argumento Final com três casas decimais
+                var resultElement = document.getElementById("result");
+                resultElement.style.color = "#ffff00"; // Código de cor amarela
+                resultElement.innerText = "Argumento Final: " + resultado.toFixed(3);
+
+                // Exibindo a mensagem
+                var messageElement = document.getElementById("message");
+                messageElement.innerText = "Ficou com dúvidas? Me chama no insta: @professor_brito";
+            }
+        </script>
+
+    </body>
 </html>
-
